@@ -64,6 +64,10 @@ var skidding := false
 
 var bumping := false
 var can_bump_sfx := true
+var can_bump_jump = false
+var can_bump_crouch = false
+var can_bump_swim = false
+var can_bump_fly = false
 
 @export var player_id := 0
 const ONE_UP_NOTE = preload("uid://dopxwjj37gu0l")
@@ -132,7 +136,7 @@ static var CHARACTER_PALETTES := [
 
 const ANIMATION_FALLBACKS := {
 	"JumpFall": "Jump", 
-	"JumpBump": "JumpFall",
+	"JumpBump": "Bump",
 	"Fall": "Move", 
 	"Pipe": "Idle", 
 	"Walk": "Move", 
@@ -141,7 +145,7 @@ const ANIMATION_FALLBACKS := {
 	"LookUp": "Idle", 
 	"CrouchFall": "Crouch", 
 	"CrouchJump": "Crouch", 
-	"CrouchBump": "CrouchFall",
+	"CrouchBump": "Bump",
 	"CrouchMove": "Crouch", 
 	"IdleAttack": "Attack", 
 	"CrouchAttack": "IdleAttack", 
@@ -157,7 +161,7 @@ const ANIMATION_FALLBACKS := {
 	"FlagSlide": "Climb",
 	"WaterMove": "Move",
 	"WaterIdle": "Idle",
-	"SwimBump": "SwimIdle",
+	"SwimBump": "Bump",
 	"DieFreeze": "Die",
 	"StarJump": "Jump",
 	"StarFall": "StarJump"
@@ -636,6 +640,10 @@ func set_power_state_frame() -> void:
 		$ResourceSetterNew.update_resource()
 	if %Sprite.sprite_frames != null:
 		can_pose = %Sprite.sprite_frames.has_animation("PoseDoor")
+		can_bump_jump = %Sprite.sprite_frames.has_animation("JumpBump")
+		can_bump_crouch = %Sprite.sprite_frames.has_animation("CrouchBump")
+		can_bump_swim = %Sprite.sprite_frames.has_animation("SwimBump")
+		can_bump_fly = %Sprite.sprite_frames.has_animation("FlyBump")
 
 func get_power_up(power_name := "") -> void:
 	if is_dead:

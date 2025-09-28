@@ -208,7 +208,7 @@ func get_animation_name() -> String:
 			else:
 				return "AirAttack"
 	if player.crouching and not wall_pushing:
-		if player.bumping:
+		if player.bumping and player.can_bump_crouch:
 			return "CrouchBump"
 		elif player.is_on_floor() == false:
 			if player.velocity.y > 0:
@@ -240,7 +240,7 @@ func get_animation_name() -> String:
 	else:
 		if player.in_water:
 			if swim_up_meter > 0:
-				if player.bumping:
+				if player.bumping and player.can_bump_swim:
 					return "SwimBump"
 				else:
 					return "SwimUp"
@@ -248,14 +248,14 @@ func get_animation_name() -> String:
 				return "SwimIdle"
 		elif player.flight_meter > 0:
 			if swim_up_meter > 0:
-				if player.bumping:
+				if player.bumping and player.can_bump_fly:
 					return "FlyBump"
 				else:
 					return "FlyUp"
 			else:
 				return "FlyIdle"
 		if player.has_jumped:
-			if player.bumping:
+			if player.bumping and player.can_bump_jump:
 				return "JumpBump"
 			elif player.velocity.y < 0:
 				if player.is_invincible:

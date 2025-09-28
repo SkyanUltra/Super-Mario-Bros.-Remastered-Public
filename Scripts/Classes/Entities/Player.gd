@@ -62,6 +62,7 @@ var character := "Mario"
 var crouching := false
 var skidding := false
 
+var bumping := false
 var can_bump_sfx := true
 
 @export var player_id := 0
@@ -131,6 +132,7 @@ static var CHARACTER_PALETTES := [
 
 const ANIMATION_FALLBACKS := {
 	"JumpFall": "Jump", 
+	"JumpBump": "Jump",
 	"Fall": "Move", 
 	"Pipe": "Idle", 
 	"Walk": "Move", 
@@ -138,10 +140,19 @@ const ANIMATION_FALLBACKS := {
 	"PipeWalk": "Move", 
 	"LookUp": "Idle", 
 	"CrouchFall": "Crouch", 
-	"CrouchAttack": "Attack", 
+	"CrouchJump": "Crouch", 
+	"CrouchBump": "Crouch",
+	"CrouchMove": "Crouch", 
+	"IdleAttack": "Attack", 
+	"CrouchAttack": "IdleAttack", 
+	"MoveAttack": "IdleAttack", 
+	"WalkAttack": "MoveAttack", 
+	"RunAttack": "MoveAttack", 
+	"SkidAttack": "MoveAttack", 
 	"FlagSlide": "Climb",
 	"WaterMove": "Move",
 	"WaterIdle": "Idle",
+	"SwimBump": "SwimUp",
 	"DieFreeze": "Die",
 	"StarJump": "Jump",
 	"StarFall": "StarJump"
@@ -410,7 +421,9 @@ func bump_ceiling() -> void:
 	AudioManager.play_sfx("bump", global_position)
 	velocity.y = CEILING_BUMP_SPEED
 	can_bump_sfx = false
+	bumping = true
 	await get_tree().create_timer(0.1).timeout
+	bumping = false
 	AudioManager.kill_sfx("small_jump")
 	AudioManager.kill_sfx("big_jump")
 

@@ -186,15 +186,34 @@ func get_animation_name() -> String:
 	if player.attacking:
 		if player.crouching:
 			return "CrouchAttack"
-		if player.is_actually_on_floor():
-			return "Attack"
-		elif player.in_water or player.flight_meter > 0:
-			return "SwimAttack"
+		elif player.is_actually_on_floor():
+			if player.skidding:
+				return "SkidAttack"
+			elif abs(player.velocity.x) >= 5 and not player.is_actually_on_wall():
+				if player.in_water or player.flight_meter > 0:
+					return "SwimAttack"
+				elif abs(player.velocity.x) < player.RUN_SPEED - 10:
+					return "WalkAttack"
+				else:
+					return "RunAttack"
+			else:
+				return "IdleAttack"
 		else:
-			return "AirAttack"
+			if player.in_water or player.flight_meter > 0:
+				return "SwimAttack"
+			else:
+				return "AirAttack"
 	if player.crouching and not wall_pushing:
-		if player.velocity.y > 0 and player.is_on_floor() == false:
-			return "CrouchFall"
+		if player.bumping:
+			return "CrouchBump"
+		elif player.is_on_floor() == false:
+			if player.velocity.y > 0:
+				return "CrouchFall"
+			elif player.velocity.y < 0:
+				return "CrouchJump"
+		elif player.is_actually_on_floor():
+			if abs(player.velocity.x) >= 5 and not player.is_actually_on_wall():
+				return "CrouchMove"
 		return "Crouch"
 	if player.is_actually_on_floor():
 		if player.skidding:
@@ -215,11 +234,16 @@ func get_animation_name() -> String:
 	else:
 		if player.in_water or player.flight_meter > 0:
 			if swim_up_meter > 0:
-				return "SwimUp"
+				if player.bumping:
+					return "SwimBump"
+				else:
+					return "SwimUp"
 			else:
 				return "SwimIdle"
 		if player.has_jumped:
-			if player.velocity.y < 0:
+			if player.bumping:
+				return "JumpBump"
+			elif player.velocity.y < 0:
 				if player.is_invincible:
 					return "StarJump"
 				return "Jump"

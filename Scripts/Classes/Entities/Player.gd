@@ -132,7 +132,7 @@ static var CHARACTER_PALETTES := [
 
 const ANIMATION_FALLBACKS := {
 	"JumpFall": "Jump", 
-	"JumpBump": "Jump",
+	"JumpBump": "JumpFall",
 	"Fall": "Move", 
 	"Pipe": "Idle", 
 	"Walk": "Move", 
@@ -141,18 +141,23 @@ const ANIMATION_FALLBACKS := {
 	"LookUp": "Idle", 
 	"CrouchFall": "Crouch", 
 	"CrouchJump": "Crouch", 
-	"CrouchBump": "Crouch",
+	"CrouchBump": "CrouchFall",
 	"CrouchMove": "Crouch", 
 	"IdleAttack": "Attack", 
 	"CrouchAttack": "IdleAttack", 
 	"MoveAttack": "IdleAttack", 
 	"WalkAttack": "MoveAttack", 
 	"RunAttack": "MoveAttack", 
-	"SkidAttack": "MoveAttack", 
+	"SkidAttack": "MoveAttack",
+	"FlyIdle": "SwimIdle",
+	"FlyUp": "SwimUp",
+	"FlyMove": "SwimMove",
+	"FlyAttack": "SwimAttack",
+	"FlyBump": "SwimBump",
 	"FlagSlide": "Climb",
 	"WaterMove": "Move",
 	"WaterIdle": "Idle",
-	"SwimBump": "SwimUp",
+	"SwimBump": "SwimIdle",
 	"DieFreeze": "Die",
 	"StarJump": "Jump",
 	"StarFall": "StarJump"
@@ -423,9 +428,10 @@ func bump_ceiling() -> void:
 	can_bump_sfx = false
 	bumping = true
 	await get_tree().create_timer(0.1).timeout
-	bumping = false
 	AudioManager.kill_sfx("small_jump")
 	AudioManager.kill_sfx("big_jump")
+	await get_tree().create_timer(0.1).timeout
+	bumping = false
 
 func super_star() -> void:
 	DiscoLevel.combo_meter += 1

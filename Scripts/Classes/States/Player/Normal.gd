@@ -190,8 +190,10 @@ func get_animation_name() -> String:
 			if player.skidding:
 				return "SkidAttack"
 			elif abs(player.velocity.x) >= 5 and not player.is_actually_on_wall():
-				if player.in_water or player.flight_meter > 0:
+				if player.in_water:
 					return "SwimAttack"
+				elif player.flight_meter > 0:
+					return "FlyAttack"
 				elif abs(player.velocity.x) < player.RUN_SPEED - 10:
 					return "WalkAttack"
 				else:
@@ -199,8 +201,10 @@ func get_animation_name() -> String:
 			else:
 				return "IdleAttack"
 		else:
-			if player.in_water or player.flight_meter > 0:
+			if player.in_water:
 				return "SwimAttack"
+			elif player.flight_meter > 0:
+				return "FlyAttack"
 			else:
 				return "AirAttack"
 	if player.crouching and not wall_pushing:
@@ -219,8 +223,10 @@ func get_animation_name() -> String:
 		if player.skidding:
 			return "Skid"
 		elif abs(player.velocity.x) >= 5 and not player.is_actually_on_wall():
-			if player.in_water or player.flight_meter > 0:
+			if player.in_water:
 				return "WaterMove"
+			elif player.flight_meter > 0:
+				return "FlyMove"
 			elif abs(player.velocity.x) < player.RUN_SPEED - 10:
 				return "Walk"
 			else:
@@ -232,7 +238,7 @@ func get_animation_name() -> String:
 				return "LookUp"
 			return "Idle"
 	else:
-		if player.in_water or player.flight_meter > 0:
+		if player.in_water:
 			if swim_up_meter > 0:
 				if player.bumping:
 					return "SwimBump"
@@ -240,6 +246,14 @@ func get_animation_name() -> String:
 					return "SwimUp"
 			else:
 				return "SwimIdle"
+		elif player.flight_meter > 0:
+			if swim_up_meter > 0:
+				if player.bumping:
+					return "FlyBump"
+				else:
+					return "FlyUp"
+			else:
+				return "FlyIdle"
 		if player.has_jumped:
 			if player.bumping:
 				return "JumpBump"

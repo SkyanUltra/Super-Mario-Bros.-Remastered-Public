@@ -275,23 +275,23 @@ func get_animation_name() -> String:
 		if player.has_jumped:
 			if player.bumping and player.can_bump_jump:
 				if abs(player.velocity_x_jump_stored) < player.RUN_SPEED - 10:
-					return "RunJumpBump"
-				else:
 					return "JumpBump"
+				else:
+					return "RunJumpBump"
 			elif player.velocity.y < 0:
 				if player.is_invincible:
 					return "StarJump"
 				elif abs(player.velocity_x_jump_stored) < player.RUN_SPEED - 10:
-					return "RunJump"
-				else:
 					return "Jump"
+				else:
+					return "RunJump"
 			else:
 				if player.is_invincible:
 					return "StarFall"
 				elif abs(player.velocity_x_jump_stored) < player.RUN_SPEED - 10:
-					return "RunJumpFall"
-				else:
 					return "JumpFall"
+				else:
+					return "RunJumpFall"
 		else:
 			# guzlad: Fixes characters with fall anims not playing them, but also prevents old characters without that anim not being accurate
 			if !player.sprite.sprite_frames.has_animation("Fall"):

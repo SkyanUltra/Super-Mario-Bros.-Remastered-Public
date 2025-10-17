@@ -215,7 +215,7 @@ func get_animation_name() -> String:
 		if player.bumping and player.can_bump_crouch:
 			return "CrouchBump"
 		elif player.is_on_floor() == false:
-			if player.velocity.y > 0:
+			if player.velocity.y >= 0:
 				return "CrouchFall"
 			elif player.velocity.y < 0:
 				return "CrouchJump"

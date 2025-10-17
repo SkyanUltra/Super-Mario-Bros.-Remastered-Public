@@ -212,7 +212,7 @@ func get_animation_name() -> String:
 	if player.kicking and player.can_kick_anim:
 		return "Kick"
 	if player.crouching and not wall_pushing:
-		if player.bumping and player.can_bump_crouch:
+		if player.bumping:
 			return "CrouchBump"
 		elif player.is_on_floor() == false:
 			if player.velocity.y >= 0:

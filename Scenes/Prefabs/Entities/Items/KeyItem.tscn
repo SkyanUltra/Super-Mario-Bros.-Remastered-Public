@@ -165,5 +165,3 @@ amount = 1
 texture = ExtResource("7_2yl70")
 randomness = 0.12
 process_material = SubResource("ParticleProcessMaterial_rls2x")
-
-[connection signal="player_entered" from="Hitbox" to="." method="collected" unbinds=1]

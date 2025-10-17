@@ -159,7 +159,7 @@ const ANIMATION_FALLBACKS := {
 	"WingCrouch": "WaterCrouch",
 	"CrouchFall": "Crouch", 
 	"CrouchJump": "Crouch", 
-	"CrouchBump": "Bump",
+	"CrouchBump": "Crouch",
 	"CrouchMove": "Crouch", 
 	"IdleAttack": "MoveAttack", 
 	"CrouchAttack": "IdleAttack", 
@@ -354,6 +354,7 @@ func camera_make_current() -> void:
 func play_animation(animation_name := "") -> void:
 	if sprite.sprite_frames == null: return
 	animation_name = get_fallback_animation(animation_name)
+	print(animation_name)
 	if sprite.animation != animation_name:
 		sprite.play(animation_name)
 
@@ -685,10 +686,6 @@ func set_power_state_frame() -> void:
 		$ResourceSetterNew.update_resource()
 	if %Sprite.sprite_frames != null:
 		can_pose = %Sprite.sprite_frames.has_animation("PoseDoor")
-		can_bump_jump = %Sprite.sprite_frames.has_animation("JumpBump")
-		can_bump_crouch = %Sprite.sprite_frames.has_animation("CrouchBump")
-		can_bump_swim = %Sprite.sprite_frames.has_animation("SwimBump")
-		can_bump_fly = %Sprite.sprite_frames.has_animation("FlyBump")
 		can_kick_anim = %Sprite.sprite_frames.has_animation("Kick")
 
 func get_power_up(power_name := "") -> void:

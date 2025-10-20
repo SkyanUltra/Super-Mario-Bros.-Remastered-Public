@@ -216,7 +216,9 @@ func _ready() -> void:
 	character = CHARACTERS[int(Global.player_characters[player_id])]
 	Global.can_time_tick = true
 	if [Global.GameMode.BOO_RACE, Global.GameMode.MARATHON, Global.GameMode.MARATHON_PRACTICE].has(Global.current_game_mode) == false:
-		apply_character_physics()
+		apply_character_physics(true)
+	else:
+		apply_character_physics(false)
 	apply_character_sfx_map()
 	Global.level_theme_changed.connect(apply_character_sfx_map)
 	Global.level_theme_changed.connect(apply_character_physics)
@@ -232,22 +234,24 @@ func _ready() -> void:
 	if Global.level_editor == null:
 		recenter_camera()
 
-func apply_character_physics() -> void:
+func apply_character_physics(apply: bool) -> void:
 	var path = "res://Assets/Sprites/Players/" + character + "/CharacterInfo.json"
 	if int(Global.player_characters[player_id]) > 3:
 		path = path.replace("res://Assets/Sprites/Players", Global.config_path.path_join("custom_characters/"))
 	path = ResourceSetter.get_pure_resource_path(path)
 	var json = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
-	for i in json.physics:
-		set(i, json.physics[i])
+	
+	if apply:
+		for i in json.physics:
+			set(i, json.physics[i])
 	
 	for i in get_tree().get_nodes_in_group("SmallCollisions"):
-		var hitbox_scale = json.get("small_hitbox_scale", [1, 1])
-		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("small_crouch_scale", 0.75))
+		var hitbox_scale = json.get("small_hitbox_scale", [1, 1]) if apply else [1, 1]
+		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("small_crouch_scale", 0.75) if apply else 0.5)
 		i._physics_process(0)
 	for i in get_tree().get_nodes_in_group("BigCollisions"):
-		var hitbox_scale = json.get("big_hitbox_scale", [1, 1])
-		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("big_crouch_scale", 0.5))
+		var hitbox_scale = json.get("big_hitbox_scale", [1, 1]) if apply else [1, 1]
+		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("big_crouch_scale", 0.5) if apply else 0.5)
 		i._physics_process(0)
 
 func apply_classic_physics() -> void:

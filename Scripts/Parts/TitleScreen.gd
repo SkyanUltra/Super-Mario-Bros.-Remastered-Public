@@ -249,7 +249,7 @@ func setup_stars() -> void:
 				$Logo/Control.get_child(star_idx).position.y = 0
 				
 				if crown_present and split_x_top % 2 != 0:
-					var middle_index = roundi(float(split_x_top) / 2)
+					var middle_index: int = split_x_top * 0.5
 					if i == middle_index:
 						$Logo/Control.get_child(middle_index).visible = false
 				

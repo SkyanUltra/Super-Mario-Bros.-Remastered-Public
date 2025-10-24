@@ -1533,6 +1533,7 @@ resource_json = ExtResource("30_p54in")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Crown" type="Control" parent="Logo/Control"]
+visible = false
 top_level = true
 custom_minimum_size = Vector2(8, 8)
 anchors_preset = 0

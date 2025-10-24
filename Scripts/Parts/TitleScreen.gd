@@ -223,10 +223,13 @@ func setup_stars() -> void:
 		var logo_height: float = logo_texture_size.y + logo2_texture_size.y  + star_texture_size.y
 		var logo_total = logo_width + logo_height
 		var star_idx := 0
+		var crown_present := false
 		for i in Global.achievements: if i == "1": star_idx += 1
 		for i in range(star_idx):
 			$Logo/Control.get_child(i).visible = true
-			if not $Logo/Control.get_child(i).name.contains("Star"): star_idx -= 1
+			if not $Logo/Control.get_child(i).name.contains("Star"):
+				star_idx -= 1
+				crown_present = true
 		# Calculate ratios
 		var x_total = round(star_idx * (logo_width / logo_total))
 		var y_total = round(star_idx * (logo_height / logo_total))
@@ -244,6 +247,12 @@ func setup_stars() -> void:
 			for i in range(split_x_top): # Top Side
 				$Logo/Control.get_child(star_idx).position.x = (logo_width / (split_x_top - 1)) * i if i != split_x_top else logo_width - star_texture_size.x
 				$Logo/Control.get_child(star_idx).position.y = 0
+				
+				if crown_present and split_x_top % 2 != 0:
+					var middle_index = roundi(float(split_x_top) / 2)
+					if i == middle_index:
+						$Logo/Control.get_child(middle_index).visible = false
+				
 				star_idx += 1
 		elif split_x_top == 1:
 			$Logo/Control.get_child(star_idx).position.x = logo_width / 2

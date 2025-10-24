@@ -282,11 +282,6 @@ func setup_stars() -> void:
 				$Logo/Control.get_child(star_idx).position.y = logo_height
 				star_idx += 1
 
-		elif split_x_bottom == 1:
-			$Logo/Control.get_child(star_idx).position.x = logo_width / 2
-			$Logo/Control.get_child(star_idx).position.y = logo_height
-			star_idx += 1
-
 		if split_y > 0:
 			for i in range(split_y): # Left/Right Side
 				$Logo/Control.get_child(star_idx).position.x = 0

@@ -258,13 +258,15 @@ func setup_stars() -> void:
 			$Logo/Control.get_child(star_idx).position.x = logo_width / 2
 			$Logo/Control.get_child(star_idx).position.y = 0
 			star_idx += 1
-		if split_x_bottom > 1:
+		if split_x_bottom > 1: # Bottom Side
+			# SkyanUltra: The bottom will only ever have an even number of stars up to a max of 6,
+			# so it will split them up accordingly and will render with a large gap inbetween since
+			# otherwise the selection text (i.e. Play Game, Settings, etc.) would look cramped.
 			var gap_ratio = 0.6
 			var gap_width = logo_width * gap_ratio
 			var left_end = (logo_width - gap_width) / 2
 			var right_start = left_end + gap_width
-			@warning_ignore("integer_division")
-			var half = split_x_bottom / 2
+			var half = split_x_bottom * 0.5
 
 			for i in range(split_x_bottom):
 				var pos_x: float

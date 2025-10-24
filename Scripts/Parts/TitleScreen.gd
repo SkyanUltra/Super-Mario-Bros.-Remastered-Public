@@ -227,7 +227,6 @@ func setup_stars() -> void:
 		for i in range(star_idx):
 			$Logo/Control.get_child(i).visible = true
 			if not $Logo/Control.get_child(i).name.contains("Star"): star_idx -= 1
-		print(star_idx)
 		# Calculate ratios
 		var x_total = round(star_idx * (logo_width / logo_total))
 		var y_total = round(star_idx * (logo_height / logo_total))
@@ -241,9 +240,6 @@ func setup_stars() -> void:
 		if total_used < star_idx:
 			split_x_top += star_idx - total_used
 		star_idx = 0
-		print(split_x_top)
-		print(split_x_bottom)
-		print(split_y)
 		if split_x_top > 1:
 			for i in range(split_x_top): # Top Side
 				$Logo/Control.get_child(star_idx).position.x = (logo_width / (split_x_top - 1)) * i if i != split_x_top else logo_width - star_texture_size.x
@@ -290,7 +286,6 @@ func setup_stars() -> void:
 				$Logo/Control.get_child(star_idx).position.x = logo_width
 				$Logo/Control.get_child(star_idx).position.y = (logo_height / (split_y + 1)) * (i+1)
 				star_idx += 1
-		print(star_idx)
 
 func go_to_achievement_menu() -> void:
 	Global.transition_to_scene("res://Scenes/Levels/AchievementMenu.tscn")

@@ -30,7 +30,7 @@ func create_template() -> void:
 		else:
 			destination = i.replace(Global.config_path.path_join("resource_packs/BaseAssets"), Global.config_path.path_join("resource_packs/new_pack"))
 		var data = []
-		if i.contains(".fnt"):
+		if i.contains(".fnt") or i.contains("ScoreFont"):
 			data = await download_fnt_text(i) 
 			## Imagine being one of the best open source game engines, yet not able to get the FUCKING CONTENTS
 			## OF AN FNT FILE SO INSTEAD YOU HAVE TO WRITE THE MOST BULLSHIT CODE TO DOWNLOAD THE FUCKING FILE
@@ -42,7 +42,9 @@ func create_template() -> void:
 			var resource = load(i)
 			if resource is Texture:
 				if OS.is_debug_build(): print("texture:" + i)
-				data = resource.get_image().save_png_to_buffer()
+				var image: Image = resource.get_image()
+				image.convert(Image.FORMAT_RGBA8)
+				data = image.save_png_to_buffer()
 			elif resource is AudioStream:
 				match i.get_extension():
 					"mp3":

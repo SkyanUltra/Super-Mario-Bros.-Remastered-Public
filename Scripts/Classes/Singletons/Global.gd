@@ -314,8 +314,10 @@ func tally_time() -> void:
 	score_tally_finished.emit()
 
 func cancel_score_tally() -> void:
-	score_tween.kill()
-	time_tween.kill()
+	if score_tween != null:
+		score_tween.kill()
+	if time_tween != null:
+		time_tween.kill()
 	tallying_score = false
 	$ScoreTally.stop()
 

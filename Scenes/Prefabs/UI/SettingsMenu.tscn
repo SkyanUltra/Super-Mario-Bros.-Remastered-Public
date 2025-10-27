@@ -447,7 +447,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = -4
 script = ExtResource("4_avtty")
 category_name = "SETTINGS_VISUALS"
-options = [NodePath("ParallaxStyle"), NodePath("BGParticles"), NodePath("HUDStyle"), NodePath("RainbowEffect"), NodePath("TransformationEffect"), NodePath("TextShadows"), NodePath("BridgeDestructionAnimation"), NodePath("VisibleTimers"), NodePath("TransitionAnimation"), null, NodePath("ColourfulPipes"), NodePath("FirebarStyle"), NodePath("ExtraParticles")]
+options = [NodePath("ParallaxStyle"), NodePath("BGParticles"), NodePath("HUDStyle"), NodePath("RainbowEffect"), NodePath("TransformationEffect"), NodePath("TextShadows"), NodePath("BridgeDestructionAnimation"), NodePath("VisibleTimers"), NodePath("TransitionAnimation"), NodePath("ColourfulPipes"), NodePath("FirebarStyle"), NodePath("ExtraParticles")]
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals"]
 custom_minimum_size = Vector2(0, 4)
@@ -640,7 +640,7 @@ settings_category = "difficulty"
 
 [node name="GameOverStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty" groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
-option_key = "game_over"
+option_key = "game_over_behaviour"
 title = "DIFFI_GAME_OVER"
 value_descs = Array[String](["DESC_GAME_OVER_0", "DESC_GAME_OVER_1", "DESC_GAME_OVER_2"])
 values = ["DIFFI_GAME_OVER_WLD", "DIFFI_GAME_OVER_LVL", "DIFFI_GAME_OVER_GME"]

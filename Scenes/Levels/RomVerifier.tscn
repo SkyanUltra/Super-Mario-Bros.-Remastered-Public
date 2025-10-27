@@ -168,16 +168,16 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.157
-anchor_top = 0.462
+anchor_top = 0.52900004
 anchor_right = 0.84300005
-anchor_bottom = 0.577
+anchor_bottom = 0.64400005
 offset_left = -0.08600044
-offset_top = -0.09600067
+offset_top = -0.03201294
 offset_right = 0.08598328
-offset_bottom = -0.015975952
+offset_bottom = 0.04801941
 shortcut = SubResource("Shortcut_5175m")
 shortcut_in_tooltip = false
-text = "SELECT A ROM..."
+text = "BROWSE FILES..."
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="BG/Border/MarginContainer/DefaultText"]
@@ -187,24 +187,34 @@ anchor_right = 1.0
 offset_bottom = 16.0
 grow_horizontal = 2
 size_flags_vertical = 0
-text = "ROM VERIFICATION REQUIRED!"
+text = "VERIFICATION REQUIRED!"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="BG/Border/MarginContainer/DefaultText/Label"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 9.200001
+offset_top = 13.0
+offset_right = -10.800003
+offset_bottom = 14.0
+grow_horizontal = 2
 
 [node name="Label2" type="Label" parent="BG/Border/MarginContainer/DefaultText"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.001
 anchor_top = 0.135
-anchor_right = 1.001
-anchor_bottom = 0.46600002
+anchor_right = 1.0
+anchor_bottom = 0.51000005
 offset_left = 0.002000749
 offset_top = -0.08000183
-offset_right = 0.0019836426
-offset_bottom = 0.071998596
+offset_right = 0.19999695
+offset_bottom = -0.08000946
 grow_horizontal = 2
 grow_vertical = 2
-text = "Please drag and drop a vanilla ROM file for \"Super Mario Bros.\" onto the window."
+text = "Please provide a vanilla ROM file for \"Super Mario Bros.\" by selecting the rom in your files or dragging the file onto the game window."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -231,7 +241,6 @@ autowrap_mode = 2
 
 [node name="ZipError" type="Label" parent="BG/Border/MarginContainer/DefaultText"]
 unique_name_in_owner = true
-visible = false
 modulate = Color(0.99999994, 0.17417294, 0.12721592, 1)
 layout_mode = 1
 anchors_preset = -1

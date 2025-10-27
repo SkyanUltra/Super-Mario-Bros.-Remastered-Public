@@ -241,6 +241,7 @@ autowrap_mode = 2
 
 [node name="ZipError" type="Label" parent="BG/Border/MarginContainer/DefaultText"]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0.99999994, 0.17417294, 0.12721592, 1)
 layout_mode = 1
 anchors_preset = -1

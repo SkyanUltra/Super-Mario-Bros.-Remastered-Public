@@ -9,6 +9,9 @@ body:
     attributes:
       label: "Version"
       description: "Specify the exact version of the game you used when you encountered the bug/issue. (You can find the game version at the bottom-left of the title screen.)"
+      placeholder: "1.0.2"
+    validations:
+      required: true
 
   - type: checkboxes
     id: type
@@ -17,25 +20,16 @@ body:
       description: "Select all applicable areas of the game that are affected by this bug/issue. (Leave blank if unsure.)"
       options:
         - label: ROM Verification
-        labels: ["ROM Verification"]
         - label: Campaign
-        labels: ["Campaign"]
         - label: Custom Level
-        labels: ["Custom Level"]
         - label: Level Editor
-        labels: ["Level Editor"]
         - label: Default Resources
-        labels: ["Default Resources"]
         - label: Custom Resources
-        labels: ["Custom Resources"]
         - label: GML Modding
-        labels: ["Modding"]
         - label: Inaccuracy
-        labels: ["Inaccuracy"]
         - label: Localization
-        labels: ["Localization"]
         - label: UI (User Interface)
-        labels: ["UI"]
+        - label: Miscellaneous
     validations:
       required: true
 

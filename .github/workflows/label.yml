@@ -1,0 +1,37 @@
+name: "Issue Form Labeler"
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+jobs:
+  label_issue:
+    permissions:
+      contents: read
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: github-actions-js/issue-form-labeled-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          schema: |
+            [
+              {
+                "anyOf": ["ROM Verification", "Campaign", "Custom Level", "Level Editor", "Default Resources", "Custom Resources", "GML Modding", "Inaccuracy", "Localization", "UI (User Interface)", "Miscellaneous"],
+                "paths": ["type"],
+                "labels": {
+                  "ROM Verification": "ROM Verification",
+                  "Campaign": "Campaign",
+                  "Custom Level": "Custom Level",
+                  "Level Editor": "Level Editor",
+                  "Default Resources": "Default Resources",
+                  "Custom Resources": "Custom Resources",
+                  "GML Modding": "GML Modding",
+                  "Inaccuracy": "Inaccuracy",
+                  "Localization": "Localization",
+                  "UI (User Interface)": "UI",
+                  "Miscellaneous": "Miscellaneous"
+                }
+              }
+            ]

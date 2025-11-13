@@ -5,42 +5,44 @@ on:
     types: [opened]
 
 permissions:
-  issues: write  # Required to add labels
+  issues: write  # Allows adding labels
 
 jobs:
-  auto-label:
+  label-issue:
     runs-on: ubuntu-latest
     steps:
-      - name: Parse issue type and apply label
-        uses: actions/github-script@v7
+      - name: Extract type and apply label
+        uses: actions/labeler@v5
         with:
           script: |
             const { issue } = github.event;
             const body = issue.body || '';
             
-            // Define your type mappings (adjust keys to match your template's 'value' options)
+            // Map your form's choice values to labels (adjust based on your config.yml options)
             const typeToLabel = {
               'bug': 'type:bug',
               'feature': 'type:feature',
               'question': 'type:question',
-              // Add more mappings as needed, e.g., 'documentation': 'type:docs'
+              'documentation': 'type:docs',
+              // Add more, e.g., 'support': 'type:support'
             };
             
-            // Regex to find the selected choice (assumes format: "**Selected choice**\nvalue")
-            // Adjust regex if your template renders differently
-            const typeMatch = body.match(/^\s*\*\*Selected choice\*\*\s*\n\s*(\w+)/im);
-            if (typeMatch) {
-              const selectedType = typeMatch[1].toLowerCase();
+            // Regex to match the selected choice in the issue body
+            // Matches: "**Selected choice**\n<value>" (common GitHub form output)
+            const match = body.match(/^\s*\*\*Selected choice\*\*\s*\n\s*(\w+)/im);
+            if (match) {
+              const selectedType = match[1].toLowerCase();
               const label = typeToLabel[selectedType];
+              
               if (label) {
-                // Check if label already exists
-                const { data: existingLabels } = await github.rest.issues.listLabelsOnIssue({
+                // Get existing labels to avoid duplicates
+                const { data: labels } = await github.rest.issues.listLabelsOnIssue({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issue.number
                 });
-                const hasLabel = existingLabels.some(l => l.name === label);
                 
+                const hasLabel = labels.some(l => l.name === label);
                 if (!hasLabel) {
                   await github.rest.issues.addLabels({
                     owner: context.repo.owner,
@@ -48,13 +50,13 @@ jobs:
                     issue_number: issue.number,
                     labels: [label]
                   });
-                  console.log(`Added label '${label}' to issue #${issue.number}`);
+                  console.log(`✅ Added label '${label}' to issue #${issue.number} (type: ${selectedType})`);
                 } else {
-                  console.log(`Label '${label}' already exists on issue #${issue.number}`);
+                  console.log(`ℹ️ Label '${label}' already on issue #${issue.number}`);
                 }
               } else {
-                console.log(`Unknown type '${selectedType}' for issue #${issue.number}`);
+                console.log(`⚠️ Unknown type '${selectedType}' in issue #${issue.number} - add to typeToLabel map`);
               }
             } else {
-              console.log('No type ID found in issue body #${issue.number}');
+              console.log(`⚠️ No 'Selected choice' found in issue body #${issue.number} - check form template`);
             }

@@ -1,1 +1,31 @@
+name: Discussion
+description: Start discussion regarding Super Mario Bros. Remastered. (We recommend you visit our discord for this instead!)
+labels: ["💬 Discussion"]
+title: '[Discussion]: '
 
+body:
+  - type: checkboxes
+    id: type
+    attributes:
+      label: "Type of Discussion"
+      description: 'Select all applicable areas of the game that this discussion touches on. (Select "Miscellaneous" if unsure.)'
+      options:
+        - label: ROM Verification
+        - label: Campaign
+        - label: Custom Level
+        - label: Level Editor
+        - label: Default Resources
+        - label: Custom Resources
+        - label: GML Modding
+        - label: Inaccuracy
+        - label: Localization
+        - label: UI (User Interface)
+        - label: Miscellaneous
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Please write a clear and concise description of the discussion you want to start."

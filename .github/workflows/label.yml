@@ -18,43 +18,21 @@ jobs:
         with:
           template-path: .github/ISSUE_TEMPLATE/bug_report.yml
 
-      - name: Apply label based on type
-        uses: fuxingloh/multi-labeler@v2
+      - name: Apply labels based on type
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          # Pass only the 'type' field value from the parsed form
-          issues-body: ${{ steps.parse.outputs.type }}
-          config: |
-            [
-              {
-                "id": "type_labels",
-                "when": {
-                  "type": [
-                    "ROM Verification",
-                    "Campaign",
-                    "Custom Level",
-                    "Level Editor",
-                    "Default Resources",
-                    "Custom Resources",
-                    "GML Modding",
-                    "Inaccuracy",
-                    "Localization",
-                    "UI (User Interface)",
-                    "Miscellaneous"
-                  ]
-                },
-                "labels": {
-                  "ROM Verification": ["ROM Verification"],
-                  "Campaign": ["Campaign"],
-                  "Custom Level": ["Custom Level"],
-                  "Level Editor": ["Level Editor"],
-                  "Default Resources": ["Default Resources"],
-                  "Custom Resources": ["Custom Resources"],
-                  "GML Modding": ["GML Modding"],
-                  "Inaccuracy": ["Inaccuracy"],
-                  "Localization": ["Localization"],
-                  "UI (User Interface)": ["UI"],
-                  "Miscellaneous": ["Miscellaneous"]
-                }
-              }
-            ]
+          issue-json: ${{ steps.parse.outputs.json }}
+          policy-config: |
+            type:
+              ROM Verification: ["ROM Verification"]
+              Campaign: ["Campaign"]
+              Custom Level: ["Custom Level"]
+              Level Editor: ["Level Editor"]
+              Default Resources: ["Default Resources"]
+              Custom Resources: ["Custom Resources"]
+              GML Modding: ["GML Modding"]
+              Inaccuracy: ["Inaccuracy"]
+              Localization: ["Localization"]
+              UI (User Interface): ["UI"]
+              Miscellaneous: ["Miscellaneous"]

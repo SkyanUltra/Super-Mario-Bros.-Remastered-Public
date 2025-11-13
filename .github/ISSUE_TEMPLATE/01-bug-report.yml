@@ -20,16 +20,27 @@ body:
       description: 'Select all applicable areas of the game that are affected by this bug/issue. (Select "Miscellaneous" if unsure.)'
       options:
         - label: ROM Verification
+          value: ROM Verification
         - label: Campaign
+          value: Campaign
         - label: Custom Level
+          value: Custom Level
         - label: Level Editor
+          value: Level Editor
         - label: Default Resources
+          value: Default Resources
         - label: Custom Resources
+          value: Custom Resources
         - label: GML Modding
+          value: GML Modding
         - label: Inaccuracy
+          value: Inaccuracy
         - label: Localization
+          value: Localization
         - label: UI (User Interface)
+          value: UI
         - label: Miscellaneous
+          value: Miscellaneous
     validations:
       required: true
 

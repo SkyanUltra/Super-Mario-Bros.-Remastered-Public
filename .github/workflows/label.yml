@@ -12,21 +12,36 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
-      - uses: stefanbuck/github-issue-parser@v3
-        id: issue-parser
+      - name: Parse issue form
+        uses: stefanbuck/github-issue-parser@v3
+        id: parse
         with:
           template-path: .github/ISSUE_TEMPLATE/bug_report.yml
-      - uses: fuxingloh/multi-labeler@v2
+
+      - name: Apply label based on type
+        uses: fuxingloh/multi-labeler@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          issues-body: ${{ steps.issue-parser.outputs.json }}
+          # Pass only the 'type' field value from the parsed form
+          issues-body: ${{ steps.parse.outputs.type }}
           config: |
             [
               {
                 "id": "type_labels",
-                "when":
-                {
-                  "type": ["ROM Verification", "Campaign", "Custom Level", "Level Editor", "Default Resources", "Custom Resources", "GML Modding", "Inaccuracy", "Localization", "UI (User Interface)", "Miscellaneous"]
+                "when": {
+                  "type": [
+                    "ROM Verification",
+                    "Campaign",
+                    "Custom Level",
+                    "Level Editor",
+                    "Default Resources",
+                    "Custom Resources",
+                    "GML Modding",
+                    "Inaccuracy",
+                    "Localization",
+                    "UI (User Interface)",
+                    "Miscellaneous"
+                  ]
                 },
                 "labels": {
                   "ROM Verification": ["ROM Verification"],

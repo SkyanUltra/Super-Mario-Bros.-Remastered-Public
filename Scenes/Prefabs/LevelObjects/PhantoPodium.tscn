@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=4 uid="uid://30fkf0fs21ie"]
+
+[ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="1_1ier7"]
+[ext_resource type="PackedScene" uid="uid://ny5glffi0suh" path="res://Scenes/Prefabs/Entities/Items/KeyItem.tscn" id="2_cisul"]
+
+[node name="PhantoPodium" type="Node2D"]
+
+[node name="Tiles" parent="." instance=ExtResource("1_1ier7")]
+position = Vector2(8, 0)
+tile_map_data = PackedByteArray("AAD9////AAAEAAIAAAD+////AAAEAAIAAAD/////AAAEAAIAAAAAAP//AAAEAAIAAAABAP//AAAEAAIAAAAAAP7/AAAEAAIAAAD///7/AAAEAAIAAAD+//7/AAAEAAIAAAA=")
+
+[node name="KeyItem" parent="." instance=ExtResource("2_cisul")]
+position = Vector2(0, -32)

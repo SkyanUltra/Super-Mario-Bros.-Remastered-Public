@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="3_at23f"]
 [ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="4_dwe2j"]
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="5_2sfe6"]
-[ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="5_88ydr"]
+[ext_resource type="Texture2D" uid="uid://y0c3ajq7uoei" path="res://Assets/Sprites/Tilesets/Terrain/TerrainTemplate.png" id="5_fl10u"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="6_4ttxc"]
 [ext_resource type="PackedScene" uid="uid://dpukj2ja3i3qj" path="res://Scenes/Prefabs/Blocks/BrickBlocks/StarBrickBlock.tscn" id="7_fl10u"]
 [ext_resource type="PackedScene" uid="uid://c6loucilra6da" path="res://Scenes/Prefabs/LevelObjects/EndFlagpole.tscn" id="7_giabg"]
@@ -60,9 +60,9 @@ tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fl10u"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3r35u"]
 resource_name = "Terrain"
-texture = ExtResource("5_88ydr")
+texture = ExtResource("5_fl10u")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -727,7 +727,7 @@ texture = ExtResource("5_88ydr")
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3r35u"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_piylw"]
 scenes/1/scene = ExtResource("6_4ttxc")
 scenes/2/scene = ExtResource("17_o8wpa")
 scenes/3/scene = ExtResource("19_og8re")
@@ -749,7 +749,7 @@ scenes/18/scene = ExtResource("15_jimku")
 scenes/19/scene = ExtResource("16_yf4ub")
 scenes/20/scene = ExtResource("18_ff4yn")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_piylw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv5sf"]
 texture = ExtResource("26_dngtq")
 0:0/next_alternative_id = 2
 0:0/animation_speed = 8.0
@@ -846,7 +846,7 @@ texture = ExtResource("26_dngtq")
 }
 0:7/1 = 1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv5sf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utmuf"]
 texture = ExtResource("27_p4kes")
 0:0/0 = 0
 0:0/0/z_index = -10
@@ -869,7 +869,7 @@ texture = ExtResource("27_p4kes")
 4:0/0 = 0
 4:0/0/z_index = -10
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utmuf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlwa0"]
 texture = ExtResource("28_n67lg")
 0:0/next_alternative_id = 3
 0:0/animation_speed = 20.0
@@ -952,7 +952,7 @@ texture = ExtResource("28_n67lg")
 &"type": 17
 }
 
-[sub_resource type="TileSet" id="TileSet_rlwa0"]
+[sub_resource type="TileSet" id="TileSet_qxyew"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -967,11 +967,11 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "OneWay"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_fl10u")
-sources/1 = SubResource("TileSetScenesCollectionSource_3r35u")
-sources/2 = SubResource("TileSetAtlasSource_piylw")
-sources/3 = SubResource("TileSetAtlasSource_jv5sf")
-sources/4 = SubResource("TileSetAtlasSource_utmuf")
+sources/0 = SubResource("TileSetAtlasSource_3r35u")
+sources/1 = SubResource("TileSetScenesCollectionSource_piylw")
+sources/2 = SubResource("TileSetAtlasSource_jv5sf")
+sources/3 = SubResource("TileSetAtlasSource_utmuf")
+sources/4 = SubResource("TileSetAtlasSource_rlwa0")
 pattern_0 = SubResource("TileMapPattern_b6qiv")
 pattern_1 = SubResource("TileMapPattern_d4nyf")
 pattern_2 = SubResource("TileMapPattern_ls3wh")
@@ -1042,14 +1042,15 @@ time_of_day = 1
 liquid_layer = 1
 
 [node name="Tiles" parent="." instance=ExtResource("4_dwe2j")]
-tile_map_data = PackedByteArray("AADy/wAAAAAIAAEAAADz/wAAAAAJAAEAAADy/wEAAAAIAAEAAADz/wEAAAAJAAEAAADy/wIAAAAIAAEAAADz/wIAAAAJAAEAAAAgAAAAAAABAAAAAAAhAAAAAAACAAAAAAAiAAAAAAACAAAAAAAjAAAAAAACAAAAAAAkAAAAAAACAAAAAAAlAAAAAAACAAAAAAAmAAAAAAACAAAAAAAnAAAAAAACAAAAAAAoAAAAAAACAAAAAAApAAAAAAACAAAAAAAqAAAAAAACAAAAAAArAAAAAAACAAAAAAAsAAAAAAACAAAAAAAtAAAAAAACAAAAAAAuAAAAAAACAAAAAAAvAAAAAAACAAAAAAAwAAAAAAACAAAAAAAxAAAAAAACAAAAAAAyAAAAAAACAAAAAAAzAAAAAAACAAAAAAA0AAAAAAACAAAAAAA1AAAAAAADAAAAAAAgAAEAAAABAAEAAAAhAAEAAAACAAEAAAAiAAEAAAACAAEAAAAjAAEAAAACAAEAAAAkAAEAAAACAAEAAAAlAAEAAAACAAEAAAAmAAEAAAACAAEAAAAnAAEAAAACAAEAAAAoAAEAAAACAAEAAAApAAEAAAACAAEAAAAqAAEAAAACAAEAAAArAAEAAAACAAEAAAAsAAEAAAACAAEAAAAtAAEAAAACAAEAAAAuAAEAAAACAAEAAAAvAAEAAAACAAEAAAAwAAEAAAACAAEAAAAxAAEAAAACAAEAAAAyAAEAAAACAAEAAAAzAAEAAAACAAEAAAA0AAEAAAACAAEAAAA1AAEAAAADAAEAAAAgAAIAAAABAAIAAAAhAAIAAAACAAIAAAAiAAIAAAACAAIAAAAjAAIAAAACAAIAAAAkAAIAAAACAAIAAAAlAAIAAAACAAIAAAAmAAIAAAACAAIAAAAnAAIAAAACAAIAAAAoAAIAAAACAAIAAAApAAIAAAACAAIAAAAqAAIAAAACAAIAAAArAAIAAAACAAIAAAAsAAIAAAACAAIAAAAtAAIAAAACAAIAAAAuAAIAAAACAAIAAAAvAAIAAAACAAIAAAAwAAIAAAACAAIAAAAxAAIAAAACAAIAAAAyAAIAAAACAAIAAAAzAAIAAAACAAIAAAA0AAIAAAACAAIAAAA1AAIAAAADAAIAAADy//z/AAAIAAAAAADy//3/AAAIAAEAAADz//z/AAAJAAAAAADz//3/AAAJAAEAAADy//7/AAAIAAEAAADz//7/AAAJAAEAAADy////AAAIAAEAAADz////AAAJAAEAAAD3//z/AAAEAAEAAAD4//z/AAAEAAEAAAD7//3/AAAEAAEAAAD8//3/AAAEAAEAAAD///7/AAAEAAEAAAAAAP7/AAAEAAEAAAADAP3/AAAEAAEAAAAHAPz/AAAEAAEAAAALAPv/AAAEAAEAAAAPAPr/AAAEAAEAAAATAPn/AAAEAAEAAAAWAPj/AAAEAAEAAAAXAPj/AAAEAAEAAAAgAP//AAAEAAIAAAA=")
-tile_set = SubResource("TileSet_rlwa0")
+tile_map_data = PackedByteArray("AADy/wAAAAAIAAEAAADz/wAAAAAJAAEAAADy/wEAAAAIAAEAAADz/wEAAAAJAAEAAADy/wIAAAAIAAEAAADz/wIAAAAJAAEAAAAgAAAAAAABAAAAAAAhAAAAAAACAAAAAAAiAAAAAAACAAAAAAAjAAAAAAACAAAAAAAkAAAAAAACAAAAAAAlAAAAAAACAAAAAAAmAAAAAAACAAAAAAAnAAAAAAACAAAAAAAoAAAAAAACAAAAAAApAAAAAAACAAAAAAAqAAAAAAACAAAAAAArAAAAAAACAAAAAAAsAAAAAAACAAAAAAAtAAAAAAACAAAAAAAuAAAAAAACAAAAAAAvAAAAAAACAAAAAAAwAAAAAAACAAAAAAAxAAAAAAACAAAAAAAyAAAAAAACAAAAAAAzAAAAAAACAAAAAAA0AAAAAAACAAAAAAA1AAAAAAADAAAAAAAgAAEAAAABAAEAAAAhAAEAAAACAAEAAAAiAAEAAAACAAEAAAAjAAEAAAACAAEAAAAkAAEAAAACAAEAAAAlAAEAAAACAAEAAAAmAAEAAAACAAEAAAAnAAEAAAACAAEAAAAoAAEAAAACAAEAAAApAAEAAAACAAEAAAAqAAEAAAACAAEAAAArAAEAAAACAAEAAAAsAAEAAAACAAEAAAAtAAEAAAACAAEAAAAuAAEAAAACAAEAAAAvAAEAAAACAAEAAAAwAAEAAAACAAEAAAAxAAEAAAACAAEAAAAyAAEAAAACAAEAAAAzAAEAAAACAAEAAAA0AAEAAAACAAEAAAA1AAEAAAADAAEAAAAgAAIAAAABAAIAAAAhAAIAAAACAAIAAAAiAAIAAAACAAIAAAAjAAIAAAACAAIAAAAkAAIAAAACAAIAAAAlAAIAAAACAAIAAAAmAAIAAAACAAIAAAAnAAIAAAACAAIAAAAoAAIAAAACAAIAAAApAAIAAAACAAIAAAAqAAIAAAACAAIAAAArAAIAAAACAAIAAAAsAAIAAAACAAIAAAAtAAIAAAACAAIAAAAuAAIAAAACAAIAAAAvAAIAAAACAAIAAAAwAAIAAAACAAIAAAAxAAIAAAACAAIAAAAyAAIAAAACAAIAAAAzAAIAAAACAAIAAAA0AAIAAAACAAIAAAA1AAIAAAADAAIAAADy//z/AAAIAAAAAADy//3/AAAIAAEAAADz//z/AAAJAAAAAADz//3/AAAJAAEAAADy//7/AAAIAAEAAADz//7/AAAJAAEAAADy////AAAIAAEAAADz////AAAJAAEAAAD3//z/AAAEAAEAAAD4//z/AAAEAAEAAAD7//3/AAAEAAEAAAD8//3/AAAEAAEAAAD///7/AAAEAAEAAAAAAP7/AAAEAAEAAAADAP3/AAAEAAEAAAAHAPz/AAAEAAEAAAALAPv/AAAEAAEAAAAPAPr/AAAEAAEAAAATAPn/AAAEAAEAAAAWAPj/AAAEAAEAAAAXAPj/AAAEAAEAAAA=")
+tile_set = SubResource("TileSet_qxyew")
 
 [node name="Player" parent="." instance=ExtResource("5_2sfe6")]
 position = Vector2(-208, -64)
 
 [node name="EndFlagpole" parent="." instance=ExtResource("7_giabg")]
 position = Vector2(520, 0)
+include_block = true
 
 [node name="EndSmallCastle" parent="EndFlagpole" instance=ExtResource("8_fmns0")]
 position = Vector2(96, 0)

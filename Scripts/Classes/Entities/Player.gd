@@ -451,7 +451,7 @@ func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 func add_stomp_combo(award_score := true) -> void:
 	if stomp_combo >= 10:
 		if award_score:
-			if [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE].has(Global.current_gamemode) or Settings.file.difficulty.inf_lives:
+			if [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE, Global.GameMode.PHANTO_PURSUIT].has(Global.current_gamemode) or Settings.file.difficulty.inf_lives:
 				Global.score += 10000
 				score_note_spawner.spawn_note(10000)
 			else:

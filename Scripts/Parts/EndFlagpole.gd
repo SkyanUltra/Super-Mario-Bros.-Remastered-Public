@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var include_block := false
+
 const FLAG_POINTS := [100, 400, 800, 2000, 5000]
 
 const FLAG_POINTS_MODERN := [100, 200, 800, 4000, 8000]
@@ -7,6 +9,13 @@ const FLAG_POINTS_MODERN := [100, 200, 800, 4000, 8000]
 signal player_reached
 
 signal sequence_begin
+
+func _ready():
+	await get_tree().physics_frame
+	if not include_block:
+		$Tiles.queue_free()
+	if Global.current_game_mode == Global.GameMode.PHANTO_PURSUIT:
+		queue_free()
 
 func on_area_entered(area: Area2D) -> void:
 	if area.owner is Player:
@@ -47,7 +56,7 @@ func give_points(player: Player) -> void:
 	if Settings.file.difficulty.flagpole_lives:
 		nearest_value = FLAG_POINTS_MODERN[value]
 	$Score.text = str(nearest_value)
-	if nearest_value == 8000 and not [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE].has(Global.current_game_mode) and not Settings.file.difficulty.inf_lives:
+	if nearest_value == 8000 and not [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE, Global.GameMode.PHANTO_PURSUIT].has(Global.current_game_mode) and not Settings.file.difficulty.inf_lives:
 		AudioManager.play_sfx("1_up", global_position)
 		Global.lives += 1
 		$ScoreNoteSpawner.spawn_one_up_note()

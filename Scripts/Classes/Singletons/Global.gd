@@ -78,7 +78,7 @@ var coins := 0:
 	set(value):
 		coins = value
 		if coins >= 100:#
-			if Settings.file.difficulty.inf_lives == 0 and (Global.current_game_mode != Global.GameMode.CHALLENGE and Global.current_campaign != "SMBANN"):
+			if Settings.file.difficulty.inf_lives == 0 and (Global.current_game_mode not in [Global.GameMode.BOO_RACE, Global.GameMode.CHALLENGE, Global.GameMode.PHANTO_PURSUIT] and Global.current_campaign != "SMBANN"):
 				lives += floor(coins / 100.0)
 				AudioManager.play_sfx("1_up", get_viewport().get_camera_2d().get_screen_center_position())
 			coins = coins % 100
@@ -158,9 +158,9 @@ var can_pause := true
 
 var fade_transition := true
 
-enum GameMode{NONE, CAMPAIGN, BOO_RACE, CHALLENGE, MARATHON, MARATHON_PRACTICE, LEVEL_EDITOR, CUSTOM_LEVEL, DISCO}
+enum GameMode{NONE, CAMPAIGN, BOO_RACE, CHALLENGE, MARATHON, MARATHON_PRACTICE, LEVEL_EDITOR, CUSTOM_LEVEL, DISCO, PHANTO_PURSUIT}
 
-const game_mode_strings := ["Default", "Campaign", "BooRace", "Challenge", "Marathon", "MarathonPractice", "LevelEditor", "CustomLevel", "Disco"]
+const game_mode_strings := ["Default", "Campaign", "BooRace", "Challenge", "Marathon", "MarathonPractice", "LevelEditor", "CustomLevel", "Disco", "Phanto"]
 
 var current_game_mode: GameMode = GameMode.NONE
 

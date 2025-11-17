@@ -197,6 +197,22 @@ func challenge_hunt_start() -> void:
 	ChallengeModeHandler.current_run_red_coins_collected = ChallengeModeHandler.red_coins_collected[Global.world_num - 1][Global.level_num -1]
 	Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn")
 
+func phanto_pursuit_selected() -> void:
+	Global.second_quest = false
+	Global.current_game_mode = Global.GameMode.PHANTO_PURSUIT
+	Global.reset_values()
+	Global.clear_saved_values()
+	Global.score = 0
+	$CanvasLayer/PhantoHunt/WorldSelect.open()
+
+func phanto_pursuit_start() -> void:
+	Global.second_quest = false
+	PipeCutscene.seen_cutscene = false
+	first_load = true
+
+	LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
+	Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn")
+
 func world_9_selected() -> void:
 	Global.second_quest = false
 	Global.current_game_mode = Global.GameMode.CAMPAIGN

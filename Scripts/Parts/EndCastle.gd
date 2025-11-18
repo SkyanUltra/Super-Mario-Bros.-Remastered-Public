@@ -17,9 +17,6 @@ static var is_transitioning := false
 
 func _ready() -> void:
 	await Global.level_complete_begin
-	$Overlay.show()
-	$OverlaySprite.show()
-	$Overlay/PlayerDetection.set_collision_layer_value(1, true)
 	Global.score_tally_finished.connect(on_tally_finished)
 	if Global.current_game_mode == Global.GameMode.BOO_RACE:
 		get_tree().create_timer(3.5, false).timeout.connect(on_music_finished)
@@ -31,11 +28,17 @@ func update_cam_limit() -> void:
 	$CameraRightLimit._enter_tree()
 
 func _process(_delta: float) -> void:
+	var not_phanto: bool = Global.current_game_mode != Global.GameMode.PHANTO_PURSUIT
+	for i in [$Overlay, $OverlaySprite, $FlagJoint]:
+		i.visible = not_phanto
+	$Overlay/PlayerDetection.set_collision_layer_value(1, not_phanto)
 	$Overlay.modulate.a = int($SmallCastleVisual.use_sprite == false)
 	if Global.level_editor != null && scene_file_path == "res://Scenes/Prefabs/LevelObjects/EndFinalCastle.tscn":
 		var is_smbs: bool = Global.current_campaign == "SMBS"
-		$SmallCastleVisual.visible = !is_smbs
-		$SmallCastleVisual2.visible = is_smbs
+		$SmallCastleVisual.visible = !is_smbs and not_phanto
+		$SmallCastleVisual2.visible = is_smbs and not_phanto
+	else:
+		$SmallCastleVisual.visible = not_phanto
 	if get_node_or_null("Wall") != null:
 		%Wall.visible = show_walls
 

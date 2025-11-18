@@ -203,7 +203,7 @@ func phanto_pursuit_selected() -> void:
 	Global.reset_values()
 	Global.clear_saved_values()
 	Global.score = 0
-	$CanvasLayer/PhantoHunt/WorldSelect.open()
+	$CanvasLayer/PhantoPursuit/WorldSelect.open()
 
 func phanto_pursuit_start() -> void:
 	Global.second_quest = false

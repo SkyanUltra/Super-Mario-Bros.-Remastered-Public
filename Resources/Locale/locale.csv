@@ -109,7 +109,8 @@ PAUSE_RESTART,,Restart Level,Recommencer,Zrestartuj Poziom,Пobtopиtь,Reinicia
 PAUSE_QUIT,,Quit to Menu,Quitter,Wyjdź do Menu,bыйtи b mehю,Salir al menú,Torna al menù,ＱＵＩＴ ＴＯ ＭＥＮＵ,Bumalik sa Menu,Zurück zum Hauptmenü,Menüye Çık,Keluar ke Menu,Sair para o Menu,メインメニュー
 PAUSE_RETRY,,Retry,Recommencer,Powtórz,Пobtopиtь,Reintentar,Riprova,ＲＥＴＲＹ,Ulit,Erneut versuchen,Yenİden Dene,Coba lagi ,Tente Novamente,リトライ
 PAUSE_SELECT_LEVEL,,Level Select,Sélection des niveaux,Wybierz Poziom,bыбop Уpobhя,Selección de nivel,Seleziona Livello,ＬＥＶＥＬ ＳＥＬＥＣＴ,Pumili ng Lebel,Level auswählen,Level Seç,Pemilihan Level,Seleção de Níveis,ステージをえらぶ
-CHALLENGE_BOO,,You Vs. Boo,Vous Contre Boo,Ty Kontra Boo,tы Пpotиb БУ,Tú contra Boo,Tu Vs. Boo,ＹＯＵ ＶＳ. ＢＯＯ,Ikaw konta Boo,Du Vs. Boo,Sen Vs. Boo,Kau Vs. Boo,Voçê Vs. Boo,テレサレース
+CHALLENGE_BOO,,You Vs. Goo,Vous Contre Boo,Ty Kontra Boo,tы Пpotиb БУ,Tú contra Boo,Tu Vs. Boo,ＹＯＵ ＶＳ. ＢＯＯ,Ikaw konta Boo,Du Vs. Boo,Sen Vs. Boo,Kau Vs. Boo,Voçê Vs. Boo,テレサレース
+CHALLENGE_PHANTO,,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit,ＰＨＡＮＴＯ　ＰＵＲＳＵＩＴ,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit,Phanto Pursuit
 MENU_SELECT_BOO,,Select Boo,Choisissez le Boo,Wybierz Boo,bыбepи БУ,Seleccionar Boo,Seleziona Boo,ＳＥＬＥＣＴ ＢＯＯ,Pumili ng Boo,Boo wählen,Boo Seç,Pilih Boo,Escolha o seu Boo,テレサをえらぶ
 PAUSE_RACE_RESTART,,Restart Race,Recommencer la course,Zrestartuj Wyścig,Пobtopиtь ГohkУ,Reiniciar carrera,Ricomincia gara,ＲＥＳＴＡＲＴ ＲＡＣＥ,Ulitin,Rennen neustarten,Yarışı Yenİden Başlat,Balapan Ulang,Recomeçe a Corrida,レースをリスタート
 CHALLENGE_HUNT,"The challenge mode featured in SMB DX, involves the player running around levels finding red coins and a hidden yoshi egg. (Like a scavenger hunt!)",Challenge Hunt,Défi de chasse,Tryb Poszukiwania,Иcпыtahиe oxotы,Caza de Monedas,Sfida di caccia,ＣＨＡＬＬＥＮＧＥ ＨＵＮＴ,Scavenger,Schatzsuche,Zorluk Avı,Tantangan Berburu,Caça ao Desafio,チャレンジゲーム
@@ -166,7 +167,7 @@ VISUAL_TRANSFORM,"Should the transformation effect on the player, be rainbow, or
 VISUAL_TEXT_SHADOWS,,Text Shadows,Ombre Textes,Cieniowany Tekstu,tehь tekcta,Sombras en textos,Ombre testo,ＴＥＸＴ ＳＨＡＤＯＷＳ,Anino ng Text,Textschatten,Yazı Gölgelerİ,Bayangan Teks,Sombreamento de Texto,テキストのかげ
 VISUAL_TRANSITION_EFFECT,Do we want transitions to be instant? or smooth?,Transition Style,Style de transition,Styl Tranzycji,ctиль пepexoдob,Estilo de transición,Stile transizione,ＴＲＡＮＳＩＴＩＯＮ ＳＴＹＬＥ,Style ng Transition,Übergangsstil,Geçİş Stİlİ,Gaya Transisi,Estilo de Transição,フェード・スタイル
 VISUAL_SMBS_SCROLL,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling,Special Scrolling
-VISUAL_SMBS_SCROLL_OFF,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off
+VISUAL_SMBS_SCROLL_OFF,Off,Off,Wył.,bыkл.,Desactivado,Off,ＯＦＦ,Off,Aus,Kapalı,Mati,Desligado,オフ
 VISUAL_SMBS_SCROLL_X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1,Sharp X1
 VISUAL_SMBS_SCROLL_PC8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801,PC-8801
 VISUAL_PARALLAX_NONE,,None,Aucun,Brak,het,Ninguno,No,ＮＯＮＥ,Wala,Kein,Hİç,None,Nenhum,オフ

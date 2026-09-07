@@ -1,11 +1,15 @@
 extends AnimatableBody2D
 
-@export var active := false
 @export_enum("Right", "Left", "Up", "Down") var direction := 0
 @export_range(1, 4, 1) var strength := 1
 
-func on_switch_hit() -> void:
-	active = not active
+@export var active := false
+
+func turn_on() -> void:
+	active = true
+
+func turn_off() -> void:
+	active = false
 
 func _physics_process(_delta: float) -> void:
 	$Particles.amount = strength * 2
@@ -21,7 +25,11 @@ func _physics_process(_delta: float) -> void:
 						modifier.y = 2
 					if Global.player_action_pressed("move_down", i.owner.player_id):
 						modifier.y = 0.5
-				var distance = (((i.owner.global_position - global_position) / modifier).length() / 250)
+				var distance = 0
+				if direction > 1:
+					distance = ((abs(i.owner.global_position.y - global_position.y) / modifier.y) / 250)
+				else:
+					distance = ((abs(i.owner.global_position.x - global_position.x) / modifier.x) / 250)
 				i.owner.velocity += (wind_velocity / distance / Vector2(2, 1))
 	$Particles.emitting = active
 	$Sprite.play("On" if active else "Off")

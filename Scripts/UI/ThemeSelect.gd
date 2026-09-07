@@ -23,17 +23,20 @@ func close() -> void:
 	hide()
 
 func update() -> void:
+	var resource_getter := ResourceGetter.new()
+	var texture = resource_getter.get_resource([THEME_ICONS_DAY, THEME_ICONS_NIGHT][["Day", "Night"].find(Global.theme_time)], false)
 	for i in %ThemeContainer.get_children():
 		i.get_node("Checkbox").visible = current_theme == i.name
-		i.texture = [THEME_ICONS_DAY, THEME_ICONS_NIGHT][["Day", "Night"].find(Global.theme_time)]
+		i.texture = texture
+	resource_getter.free()
 
 func theme_selected(theme_name := "") -> void:
 	current_theme = theme_name
 	Global.level_theme = current_theme
 	Global.current_level.theme = current_theme
 	level_theme_changed.emit()
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	ResourceSetter.cache.clear()
-	Global.level_theme_changed.emit()
+	Global.update_theme()
 	update()
 	close()

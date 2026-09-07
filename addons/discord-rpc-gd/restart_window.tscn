@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://byc4c6d5tpomq"]
+[gd_scene format=3 uid="uid://byc4c6d5tpomq"]
 
 [ext_resource type="Texture2D" uid="uid://csl0e2px0cwc1" path="res://addons/discord-rpc-gd/Logo_V2_No_Bg.png" id="1_0svbg"]
 
@@ -23,7 +23,7 @@ image = SubResource("Image_4rf8i")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7v0rg"]
 
-[node name="RestartWindow" type="ConfirmationDialog"]
+[node name="RestartWindow" type="ConfirmationDialog" unique_id=807808360]
 auto_translate_mode = 2
 oversampling_override = 1.0
 title = "Restart required"
@@ -32,23 +32,22 @@ size = Vector2i(430, 500)
 visible = true
 transient = false
 unresizable = true
-auto_translate = false
 theme = SubResource("Theme_swwco")
 ok_button_text = "Restart"
 cancel_button_text = "Save and restart"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=42135881]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -207.0
 offset_top = 8.0
 offset_right = 207.0
-offset_bottom = 458.0
+offset_bottom = 455.0
 grow_horizontal = 2
 mouse_filter = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=276112107]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -59,26 +58,26 @@ offset_right = 200.0
 offset_bottom = 389.0
 grow_horizontal = 2
 
-[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer" unique_id=457685765]
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_5vqdt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=909636011]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="DocsIcon" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="DocsIcon" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer" unique_id=910814366]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 texture = SubResource("ImageTexture_gdtpn")
 stretch_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1580835494]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -87,7 +86,7 @@ theme_override_font_sizes/font_size = 20
 text = "HOW TO USE"
 uri = "https://vaporvee.com/docs/discord-rpc-godot#quick-start"
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer" unique_id=2001827103]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -95,7 +94,7 @@ size_flags_vertical = 0
 texture = ExtResource("1_0svbg")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1107015137]
 custom_minimum_size = Vector2(400, 250)
 layout_mode = 2
 size_flags_horizontal = 4

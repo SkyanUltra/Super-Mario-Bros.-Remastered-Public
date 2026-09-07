@@ -1,21 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://m5o0l71ne3u4"]
+[gd_scene format=3 uid="uid://m5o0l71ne3u4"]
 
 [ext_resource type="Texture2D" uid="uid://c6pd7cdhx78od" path="res://Assets/Sprites/UI/Tab.png" id="1_3ufth"]
 [ext_resource type="Script" uid="uid://kvlxhhkgtuk2" path="res://Scripts/UI/LevelEditorTab.gd" id="1_8b8gk"]
 [ext_resource type="Texture2D" uid="uid://bgjdnv8n8l1hb" path="res://Assets/Sprites/UI/TabSelected.png" id="2_8b8gk"]
 [ext_resource type="StyleBox" uid="uid://btw30ed0dg4bt" path="res://Resources/UI/Tab.tres" id="2_sup1d"]
 [ext_resource type="Texture2D" uid="uid://xsfs2psb84ql" path="res://Assets/Sprites/UI/EditorButtons.png" id="3_sup1d"]
+[ext_resource type="StyleBox" uid="uid://dym50k6bgpd2" path="res://Resources/UI/TabSelected.tres" id="4_wt4vx"]
+[ext_resource type="Script" uid="uid://ca3bew33g45eq" path="res://Scripts/Classes/UI/PackTextureRect.gd" id="7_7wgmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mw2n"]
 atlas = ExtResource("3_sup1d")
 region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wt4vx"]
-texture = ExtResource("2_8b8gk")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qebwb"]
 texture = ExtResource("1_3ufth")
@@ -31,7 +26,7 @@ texture_margin_top = 2.0
 texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
-[node name="Parts" type="MarginContainer" groups=["EditorTabs"]]
+[node name="Parts" type="MarginContainer" unique_id=656496225 groups=["EditorTabs"]]
 offset_right = 24.0
 offset_bottom = 24.0
 focus_mode = 2
@@ -41,18 +36,18 @@ script = ExtResource("1_8b8gk")
 icon = SubResource("AtlasTexture_5mw2n")
 title = "Parts"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1328108929]
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("2_sup1d")
 
-[node name="Selected" type="Panel" parent="."]
+[node name="Selected" type="Panel" parent="." unique_id=999382289]
 visible = false
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wt4vx")
+theme_override_styles/panel = ExtResource("4_wt4vx")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=590643637]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_qebwb")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_qebwb")
@@ -60,19 +55,22 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_qebwb")
 theme_override_styles/focus = SubResource("StyleBoxTexture_5mw2n")
 flat = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1399406233]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = -4
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1534829489]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_5mw2n")
 stretch_mode = 3
+script = ExtResource("7_7wgmt")
+use_cache = false
+metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1170607246]
 visible = false
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.96862745, 0.22352941, 0.0627451, 1)

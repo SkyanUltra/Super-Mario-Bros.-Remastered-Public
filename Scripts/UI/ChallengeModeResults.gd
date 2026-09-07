@@ -19,11 +19,12 @@ func _ready() -> void:
 	coin_medal = int(ChallengeModeHandler.red_coins_collected[Global.world_num - 1][Global.level_num - 1]) & 0b011111 == 0b011111
 	score_medal = ChallengeModeHandler.top_challenge_scores[Global.world_num -1][Global.level_num - 1] >= ChallengeModeHandler.CHALLENGE_TARGETS[Global.current_campaign][Global.world_num -1][Global.level_num -1]
 	yoshi_medal = ChallengeModeHandler.is_coin_collected(ChallengeModeHandler.CoinValues.YOSHI_EGG, ChallengeModeHandler.red_coins_collected[Global.world_num - 1][Global.level_num - 1])
+	%YoshiEgg.frame = Global.level_num - 1
 	$ChallengeResults.play()
 	setup_results()
 
 func _process(_delta: float) -> void:
-	if can_exit and Input.is_action_just_pressed("jump_0"):
+	if can_exit and Global.multibind_action_just_pressed("jump_0"):
 		can_exit = false
 		exiting = true
 		save_results()
@@ -76,7 +77,6 @@ func setup_results() -> void:
 		idx += 1
 	$Sprite2D/Sprite2D3/ScoreText/Target.text = "/ " + str(ChallengeModeHandler.CHALLENGE_TARGETS[Global.current_campaign][Global.world_num - 1][Global.level_num - 1])
 	$WorldLevel.text = str(Global.world_num) + "-" + str(Global.level_num)
-	$Yoshi.play(["Green", "Yellow", "Red", "Blue"][Global.level_num - 1])
 
 func update_coins_display() -> void:
 	var idx := 0
@@ -104,6 +104,7 @@ func give_yoshi_medal() -> void:
 		$SmokeParticle.play()
 		$Yoshi/AudioStreamPlayer2D.play()
 		$Yoshi.show()
+		$Yoshi.play(["Green", "Yellow", "Red", "Blue"][Global.level_num - 1])
 		if yoshi_medal == false:
 			await get_tree().create_timer(0.5, false).timeout
 			do_medal_give_animation($Sprite2D3/YoshiEgg)
